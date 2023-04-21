@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number guesser #1</title>
+
+    <meta charset="utf-8" />
+    <meta name="author" content="Anta" />
+    <meta name="description" content="Number guesser based on Below/Above questions and an interval" />
+    <link href="./style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <h1>NUMBER GUESSER</h1>
+
+    <p>Write your number between the interval you gave and the machine have to guess</p>
+
+    <div id="intervalContainer">
+        <p>Choose a minimum number to guess : </p>
+        <input type="number" min="0" id="minInterval" />
+        <p>Choose a maximum number to guess : </p>
+        <input type="number" min="0" id="maxInterval" />
+        <br />
+        <button onclick="setInterval()">Enter</button>
+    </div>
+
+    <div id="guesserContainer">
+        <p id="guessInterval">The number to guess is between and</p>
+        <p id="guess">Is your number : ?</p>
+        <p id="guessCount">Number of try :</p>
+
+        <button onclick="guessedCorrect()">Yes!</button>
+        <button onclick="guessedBelow()">Below</button>
+        <button onclick="guessedAbove()">Above</button>
+        <button onclick="previousGuess()">Previous</button>
+    </div>
+    <button id="restartButton" onclick="restart()">Restart</button>
+
+    <script src="index.js" type="text/javascript"></script>
+</body>
+</html>
