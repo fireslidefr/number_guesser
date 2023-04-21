@@ -5,11 +5,11 @@ const intervalContainer = document.getElementById("intervalContainer");
 const displayedInterval = document.getElementById("guessInterval")
 const guesserButtons = guesserContainer.getElementsByTagName("button");
 
-let minGuess = 0;
-let maxGuess = 100;
-let allIntervalList = [[minInterval,maxInterval]];
-let isTheNumberGuessed = false;
-let guessCount = 1;
+var minGuess = 0;
+var maxGuess = 100;
+var allInterval = [[minInterval,maxInterval]];
+var isTheNumberGuessed = false;
+var guessCount = 1;
 
 guesserContainer.style.display = "none";
 
@@ -33,7 +33,7 @@ function guessedCorrect() {
 
 function guessedBelow() {
     if (!(minGuess === guessedNumber)) {
-        allIntervalList.push([minGuess, maxGuess]);
+        allInterval.push([minGuess, maxGuess]);
         maxGuess = guessedNumber - 1;
         guessCount++;
         Guess();
@@ -42,7 +42,7 @@ function guessedBelow() {
 
 function guessedAbove() {
     if (!(maxGuess === guessedNumber)) {
-        allIntervalList.push([minGuess, maxGuess]);
+        allInterval.push([minGuess, maxGuess]);
         minGuess = guessedNumber + 1;
         guessCount++;
         Guess();
@@ -56,15 +56,16 @@ function hideGuesserButtons() {
 }
 function showGuesserButtons() {
     for (i = 0; i < guesserButtons.length; i++) {
-        guesserButtons[i].style.visibility = "inherit";
+        guesserButtons[i].style.display = "inline";
     }
 }
 
 function previousGuess() {
+    console.log("test")
     if (guessCount > 1) {
         minGuess = allInterval[guessCount - 1][0];
-        maxGuess = allIntervalList[guessCount - 1][1];
-        allIntervalList.splice(-1);
+        maxGuess = allInterval[guessCount - 1][1];
+        allInterval.splice(-1);
         guessCount--;
         Guess();
     }
@@ -73,7 +74,7 @@ function previousGuess() {
 function restart() {
     minGuess = 0;
     maxGuess = 100;
-    allIntervalList = [[0, 100]];
+    allInterval = [[0, 100]];
     isTheNumberGuessed = false;
     guessCount = 1;
     intervalContainer.style.display = "block";
